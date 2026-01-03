@@ -4,7 +4,8 @@
       "Bash(mkdir:*)",
       "Bash(npm create:*)",
       "Bash(dir:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: AiGS Employee Onboarding Command Center\n\n- Built React 18 + Vite application with Tailwind CSS\n- Real-time onboarding progress tracking with 2-second polling\n- Integration with n8n webhooks for workflow automation\n- Complete form validation and demo scenarios\n- Active and completed onboarding dashboards\n- Responsive design with AiGS brand colors\n\nFeatures:\n- 9 React components for modular UI\n- 2 custom hooks for API logic and polling\n- Demo scenarios for quick testing\n- Comprehensive error handling\n- Professional enterprise UI/UX\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
