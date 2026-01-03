@@ -29,7 +29,7 @@ export default function ProgressStep({ icon, label, status }) {
         {getStatusIcon()}
       </div>
       <span className="text-lg">{icon}</span>
-      <span className={`${getTextColor()} transition-colors`}>{label}</span>
+      <span className={`${getTextColor()} transition-colors text-sm`}>{label}</span>
     </div>
   );
 }

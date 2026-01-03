@@ -1,7 +1,7 @@
 export const WEBHOOK_START_URL = import.meta.env.VITE_WEBHOOK_START_URL || 'http://localhost:5678/webhook/onboarding/start';
 export const WEBHOOK_STATUS_URL = import.meta.env.VITE_WEBHOOK_STATUS_URL || 'http://localhost:5678/webhook/onboarding/status';
 
-export const POLLING_INTERVAL = 2000; // 2 seconds
+export const POLLING_INTERVAL = 5000; // 5 seconds
 
 export const DEPARTMENTS = [
   'Engineering',

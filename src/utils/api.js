@@ -29,5 +29,12 @@ export const getOnboardingStatus = async (onboardingId) => {
     throw new Error(error.message || 'Failed to fetch status');
   }
 
-  return response.json();
+  const data = await response.json();
+
+  // If webhook returns an array, unwrap it to get the first object
+  const result = Array.isArray(data) ? data[0] : data;
+
+  console.log('[API] Status webhook returned:', result);
+
+  return result;
 };

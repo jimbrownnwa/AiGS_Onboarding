@@ -78,8 +78,8 @@ function App() {
       };
     });
 
-    // Clear current onboarding
-    setCurrentOnboarding(null);
+    // Keep currentOnboarding set so completion summary stays visible
+    // It will be replaced when user submits a new onboarding
   }, []);
 
   const handleSelectScenario = (scenarioData) => {
@@ -134,12 +134,12 @@ function App() {
                     onComplete={handleOnboardingComplete}
                   />
                 ) : (
-                  <div className="bg-white rounded-lg shadow-md p-12 text-center h-full flex flex-col items-center justify-center">
+                  <div className="bg-card-bg rounded-lg shadow-lg p-12 text-center h-full flex flex-col items-center justify-center">
                     <div className="text-6xl mb-4">⏳</div>
-                    <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                    <h3 className="text-xl font-semibold text-white mb-2">
                       Ready to Process
                     </h3>
-                    <p className="text-gray-500">
+                    <p className="text-gray-400">
                       Submit a new hire form to see real-time onboarding progress
                     </p>
                   </div>
@@ -152,7 +152,7 @@ function App() {
         {/* Active Onboardings Tab */}
         {activeTab === 'active' && (
           <div>
-            <h2 className="text-2xl font-semibold text-text-dark mb-6">Active Onboardings</h2>
+            <h2 className="text-2xl font-semibold text-white mb-6">Active Onboardings</h2>
             <ActiveOnboardingsTable onboardings={onboardings.active} />
           </div>
         )}
@@ -160,7 +160,7 @@ function App() {
         {/* Completed Onboardings Tab */}
         {activeTab === 'completed' && (
           <div>
-            <h2 className="text-2xl font-semibold text-text-dark mb-6">
+            <h2 className="text-2xl font-semibold text-white mb-6">
               Completed Onboardings
             </h2>
             <CompletedOnboardingsTable onboardings={onboardings.completed} />

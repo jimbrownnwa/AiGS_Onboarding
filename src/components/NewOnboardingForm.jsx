@@ -131,11 +131,24 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
   }));
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h3 className="text-xl font-semibold text-text-dark mb-6">New Hire Information</h3>
+    <div className="bg-card-bg rounded-lg shadow-lg p-6">
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="text-xl font-semibold text-white">New Hire Information</h3>
+        <button
+          type="button"
+          onClick={() => setFormData({
+            first_name: '', last_name: '', personal_email: '', department: '',
+            title: '', manager_name: '', manager_email: '', start_date: '',
+            location: '', equipment_needed: []
+          })}
+          className="text-sm text-gray-400 hover:text-white"
+        >
+          Clear Form
+        </button>
+      </div>
 
       {error && (
-        <div className="mb-6 p-4 bg-red-50 border border-error rounded-md">
+        <div className="mb-6 p-4 bg-red-900/30 border border-error rounded-md">
           <p className="text-error text-sm">{error}</p>
         </div>
       )}
@@ -143,7 +156,7 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* First Name */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-text-light mb-1">
             First Name <span className="text-error">*</span>
           </label>
           <input
@@ -153,8 +166,9 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
             onChange={handleChange}
             onBlur={handleBlur}
             disabled={isSubmitting}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent ${
-              errors.first_name && touched.first_name ? 'border-error' : 'border-gray-300'
+            placeholder="John Doe"
+            className={`w-full px-3 py-2 bg-input-bg border rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange ${
+              errors.first_name && touched.first_name ? 'border-error' : 'border-gray-600'
             }`}
           />
           {errors.first_name && touched.first_name && (
@@ -164,7 +178,7 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
 
         {/* Last Name */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-text-light mb-1">
             Last Name <span className="text-error">*</span>
           </label>
           <input
@@ -174,8 +188,8 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
             onChange={handleChange}
             onBlur={handleBlur}
             disabled={isSubmitting}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent ${
-              errors.last_name && touched.last_name ? 'border-error' : 'border-gray-300'
+            className={`w-full px-3 py-2 bg-input-bg border rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange ${
+              errors.last_name && touched.last_name ? 'border-error' : 'border-gray-600'
             }`}
           />
           {errors.last_name && touched.last_name && (
@@ -185,7 +199,7 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
 
         {/* Personal Email */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-text-light mb-1">
             Personal Email <span className="text-error">*</span>
           </label>
           <input
@@ -195,8 +209,9 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
             onChange={handleChange}
             onBlur={handleBlur}
             disabled={isSubmitting}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent ${
-              errors.personal_email && touched.personal_email ? 'border-error' : 'border-gray-300'
+            placeholder="john.doe@company.com"
+            className={`w-full px-3 py-2 bg-input-bg border rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange ${
+              errors.personal_email && touched.personal_email ? 'border-error' : 'border-gray-600'
             }`}
           />
           {errors.personal_email && touched.personal_email && (
@@ -206,7 +221,7 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
 
         {/* Department */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-text-light mb-1">
             Department <span className="text-error">*</span>
           </label>
           <select
@@ -215,8 +230,8 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
             onChange={handleChange}
             onBlur={handleBlur}
             disabled={isSubmitting}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent ${
-              errors.department && touched.department ? 'border-error' : 'border-gray-300'
+            className={`w-full px-3 py-2 bg-input-bg border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-orange ${
+              errors.department && touched.department ? 'border-error' : 'border-gray-600'
             }`}
           >
             <option value="">Select a department</option>
@@ -233,33 +248,33 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
 
         {/* Job Title */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
+          <label className="block text-sm font-medium text-text-light mb-1">Job Title</label>
           <input
             type="text"
             name="title"
             value={formData.title}
             onChange={handleChange}
             disabled={isSubmitting}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+            className="w-full px-3 py-2 bg-input-bg border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange"
           />
         </div>
 
         {/* Manager Name */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Manager Name</label>
+          <label className="block text-sm font-medium text-text-light mb-1">Manager Name</label>
           <input
             type="text"
             name="manager_name"
             value={formData.manager_name}
             onChange={handleChange}
             disabled={isSubmitting}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+            className="w-full px-3 py-2 bg-input-bg border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange"
           />
         </div>
 
         {/* Manager Email */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Manager Email</label>
+          <label className="block text-sm font-medium text-text-light mb-1">Manager Email</label>
           <input
             type="email"
             name="manager_email"
@@ -267,8 +282,8 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
             onChange={handleChange}
             onBlur={handleBlur}
             disabled={isSubmitting}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent ${
-              errors.manager_email && touched.manager_email ? 'border-error' : 'border-gray-300'
+            className={`w-full px-3 py-2 bg-input-bg border rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange ${
+              errors.manager_email && touched.manager_email ? 'border-error' : 'border-gray-600'
             }`}
           />
           {errors.manager_email && touched.manager_email && (
@@ -278,7 +293,7 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
 
         {/* Start Date */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-text-light mb-1">
             Start Date <span className="text-error">*</span>
           </label>
           <input
@@ -288,8 +303,8 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
             onChange={handleChange}
             onBlur={handleBlur}
             disabled={isSubmitting}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent ${
-              errors.start_date && touched.start_date ? 'border-error' : 'border-gray-300'
+            className={`w-full px-3 py-2 bg-input-bg border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-orange ${
+              errors.start_date && touched.start_date ? 'border-error' : 'border-gray-600'
             }`}
           />
           {errors.start_date && touched.start_date && (
@@ -299,13 +314,13 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
 
         {/* Location */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
+          <label className="block text-sm font-medium text-text-light mb-1">Location</label>
           <select
             name="location"
             value={formData.location}
             onChange={handleChange}
             disabled={isSubmitting}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+            className="w-full px-3 py-2 bg-input-bg border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange"
           >
             <option value="">Select a location</option>
             {LOCATIONS.map((loc) => (
@@ -318,7 +333,7 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
 
         {/* Equipment Needed */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Equipment Needed</label>
+          <label className="block text-sm font-medium text-text-light mb-2">Equipment Needed</label>
           <div className="space-y-2">
             {EQUIPMENT_OPTIONS.map((equipment) => (
               <label key={equipment.id} className="flex items-center gap-2">
@@ -328,9 +343,9 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
                   checked={formData.equipment_needed.includes(equipment.id)}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className="w-4 h-4 text-accent focus:ring-accent border-gray-300 rounded"
+                  className="w-4 h-4 text-orange focus:ring-orange border-gray-600 rounded bg-input-bg"
                 />
-                <span className="text-sm text-gray-700">{equipment.label}</span>
+                <span className="text-sm text-text-light">{equipment.label}</span>
               </label>
             ))}
           </div>
@@ -340,7 +355,7 @@ const NewOnboardingForm = forwardRef(({ onSuccess }, ref) => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-accent hover:bg-accent-light text-white font-medium py-3 px-6 rounded-md transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full bg-orange hover:bg-orange/90 text-white font-medium py-3 px-6 rounded-md transition-colors disabled:bg-gray-600 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           {isSubmitting ? (
             <>

@@ -6,7 +6,7 @@ export default function TabNavigation({ activeTab, onTabChange }) {
   ];
 
   return (
-    <div className="border-b border-gray-300">
+    <div className="border-b border-gray-700">
       <div className="container mx-auto px-6">
         <div className="flex gap-1">
           {tabs.map((tab) => (
@@ -15,8 +15,8 @@ export default function TabNavigation({ activeTab, onTabChange }) {
               onClick={() => onTabChange(tab.id)}
               className={`px-6 py-3 font-medium transition-colors relative ${
                 activeTab === tab.id
-                  ? 'text-accent border-b-2 border-accent'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'text-orange border-b-2 border-orange'
+                  : 'text-gray-400 hover:text-text-light'
               }`}
             >
               {tab.label}

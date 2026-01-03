@@ -1,10 +1,10 @@
 export default function CompletedOnboardingsTable({ onboardings }) {
   if (onboardings.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-12 text-center">
+      <div className="bg-card-bg rounded-lg shadow-lg p-12 text-center">
         <div className="text-6xl mb-4">✅</div>
-        <h3 className="text-xl font-semibold text-gray-700 mb-2">No Completed Onboardings Yet</h3>
-        <p className="text-gray-500">Completed onboardings will appear here.</p>
+        <h3 className="text-xl font-semibold text-white mb-2">No Completed Onboardings Yet</h3>
+        <p className="text-gray-400">Completed onboardings will appear here.</p>
       </div>
     );
   }
@@ -20,54 +20,54 @@ export default function CompletedOnboardingsTable({ onboardings }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="bg-card-bg rounded-lg shadow-lg overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-gray-100 border-b border-gray-300">
+          <thead className="bg-primary border-b border-gray-700">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">
                 Employee
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">
                 Department
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">
                 Start Date
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">
                 Completed
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">
                 Duration
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">
                 Resources
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-card-bg divide-y divide-gray-700">
             {onboardings.map((onboarding) => (
-              <tr key={onboarding.onboarding_id} className="hover:bg-gray-50">
+              <tr key={onboarding.onboarding_id} className="hover:bg-input-bg">
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">
+                  <div className="text-sm font-medium text-white">
                     {onboarding.employee_name}
                   </div>
                   {onboarding.title && (
-                    <div className="text-sm text-gray-500">{onboarding.title}</div>
+                    <div className="text-sm text-gray-400">{onboarding.title}</div>
                   )}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-text-light">
                   {onboarding.department}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-text-light">
                   {onboarding.start_date ? new Date(onboarding.start_date).toLocaleDateString() : 'N/A'}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-text-light">
                   {onboarding.completed_at
                     ? new Date(onboarding.completed_at).toLocaleString()
                     : 'N/A'}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-text-light">
                   {getDuration(onboarding.started_at, onboarding.completed_at)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm">
